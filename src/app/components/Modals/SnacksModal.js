@@ -67,6 +67,32 @@ export default function SnacksModal({ isOpen, onClose, product }) {
           borderRadius: "1rem",
         }}
       >
+        <div>
+          <div 
+            style={{ 
+              fontWeight: "bold",
+              gap:".4rem",
+              display:"flex" 
+            }}
+            >
+            Basic Bouquete 
+            <span
+              style={{
+                fontSize:".85rem"
+              }}
+            >  
+              (10.000 won)
+            </span>
+          </div>
+
+          <div
+            style={{
+              fontStyle:"italic"
+            }}
+          >
+            *snacks and gift card included
+          </div>
+        </div>
         {/* Scrollable Content */}
         <div
           style={{
@@ -87,6 +113,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
               src={product.images[0]}
               alt={product.title}
               style={{
+                width:"100%",
                 height: "150px",
                 objectFit: "cover",
                 borderRadius: "1rem",
@@ -103,38 +130,12 @@ export default function SnacksModal({ isOpen, onClose, product }) {
               display: "flex",
               flexDirection: "column",
               gap: "0.75rem",
-              maxHeight: "250px",
+              maxHeight: "200px",
               overflowY: "auto",
               paddingRight: "0.25rem",
             }}
           >
-            <div>
-              <div 
-                style={{ 
-                  fontWeight: "bold",
-                  gap:".4rem",
-                  display:"flex" 
-                }}
-                >
-                Basic Bouquete 
-                <span
-                  style={{
-                    fontSize:".85rem"
-                  }}
-                >  
-                  (10.000 won)
-                </span>
-              </div>
-
-              <div
-                style={{
-                  fontStyle:"italic"
-                }}
-              >
-                *snacks and gift card included
-              </div>
-                
-            </div>
+            
             {items.map((item, idx) => (
               <div
                 key={idx}
