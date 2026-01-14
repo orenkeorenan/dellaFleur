@@ -41,7 +41,6 @@ export default function CustomsModal({ isOpen, onClose, product }) {
           flexDirection: "column",
           gap: "1rem",
           padding: "1rem",
-          maxHeight: "90vh",
           overflowY: "auto",
           justifyContent: "center",
           fontFamily: "'Helvetica Neue', sans-serif",

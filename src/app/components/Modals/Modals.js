@@ -57,6 +57,7 @@ export default function Modals({ isOpen, onClose, children }) {
             border: "none",
             fontSize: "1.5rem",
             cursor: "pointer",
+            color:"black"
           }}
         >
           ×

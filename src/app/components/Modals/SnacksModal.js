@@ -58,8 +58,6 @@ export default function SnacksModal({ isOpen, onClose, product }) {
       <div
         style={{
           padding: "0",
-          maxWidth: "400px",
-          margin: "0 auto",
           display: "flex",
           flexDirection: "column",
           fontFamily: "'Helvetica Neue', sans-serif",
