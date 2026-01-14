@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 
 export default function Modals({ isOpen, onClose, children }) {
-  // Close modal on Escape key
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape") onClose();
@@ -12,11 +11,11 @@ export default function Modals({ isOpen, onClose, children }) {
     return () => window.removeEventListener("keydown", handleKey);
   }, [onClose]);
 
-  if (!isOpen) return null; // don’t render if not open
+  if (!isOpen) return null;
 
   return (
     <div
-      onClick={onClose} // click background to close
+      onClick={onClose}
       style={{
         position: "fixed",
         top: 0,
@@ -29,24 +28,25 @@ export default function Modals({ isOpen, onClose, children }) {
         alignItems: "center",
         zIndex: 9999,
         padding: "1rem",
-        overflowY: "auto",
       }}
     >
       <div
-        onClick={(e) => e.stopPropagation()} // prevent close when clicking inside modal
+        onClick={(e) => e.stopPropagation()}
         style={{
           backgroundColor: "#fff",
           borderRadius: "0.5rem",
           width: "100%",
           maxWidth: "400px",
+          maxHeight: "90vh",       // limit modal height
+          overflowY: "auto",       // scroll inside if content too tall
           padding: "1.5rem",
           position: "relative",
           boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-          maxHeight:"90vh",
-          overflow:"hidden"
+          display: "flex",
+          flexDirection: "column",  // ensures vertical stacking
         }}
       >
-        {/* X Close button */}
+        {/* Close button */}
         <button
           onClick={onClose}
           style={{

@@ -32,8 +32,6 @@ export default function FlowerModal({ isOpen, onClose, product }) {
       <div
         style={{
           padding: "1.5rem",
-          maxWidth: "400px",
-          margin: "0 auto",
           textAlign: "center",
           fontFamily: "'Helvetica Neue', sans-serif",
           color: "#333",
