@@ -49,9 +49,16 @@ export default function HomePage() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem"}}>
       <h1 style={{ textAlign: "center", fontSize: "1.15rem" }}>
-        <div style={{ display: "flex", flexDirection: "column", fontStyle: "italic" }}>
-          <span>(Preorder Graduation)</span>
-          <span>20 January - 13 February</span>
+        <div 
+          style={{ 
+            display: "flex", 
+            flexDirection: "column", 
+            fontStyle: "italic",
+            color:"black"
+          }}
+        >
+            <span>(Preorder Graduation)</span>
+            <span>20 January - 13 February</span>
         </div>
       </h1>
 

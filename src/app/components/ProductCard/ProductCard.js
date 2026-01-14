@@ -83,6 +83,7 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
+            color:"black"
           }}
         >
           {title}
