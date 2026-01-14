@@ -95,31 +95,51 @@ export default function CustomsModal({ isOpen, onClose, product }) {
 
         {/* Upload Files */}
         <div>
-          <label style={{ fontWeight: "500" }}>Upload reference images</label>
-          <input 
-            type="file" multiple onChange={handleFileChange} 
-            style={{ 
-              display: "block", 
-              marginTop: "0.5rem",
-              backgroundColor:"white",
-              color:"black"
-            }} 
+  <label style={{ fontWeight: "500" }}>Upload reference images</label>
+
+          {/* Hidden native input */}
+          <input
+            type="file"
+            id="fileUpload"
+            multiple
+            onChange={handleFileChange}
+            style={{ display: "none" }}
           />
+
+          {/* Custom button */}
+          <label
+            htmlFor="fileUpload"
+            style={{
+              display: "inline-block",
+              marginTop: "0.5rem",
+              padding: "0.5rem 1rem",
+              backgroundColor: "white",
+              color: "black",
+              border: "1px solid #ccc",
+              borderRadius: "0.25rem",
+              cursor: "pointer",
+              fontWeight: "500",
+            }}
+          >
+            Choose Files
+          </label>
+
           {files.length > 0 && (
-            <div 
-              style={{ 
-                marginTop: "0.5rem", 
-                fontSize: "0.85rem", 
-                backgroundColor:"white",
-                color:"black"
+            <div
+              style={{
+                marginTop: "0.5rem",
+                fontSize: "0.85rem",
+                backgroundColor: "white",
+                color: "black",
               }}
-              >
+            >
               {files.map((f, idx) => (
                 <div key={idx}>{f.name}</div>
               ))}
             </div>
           )}
         </div>
+
 
         {/* Budget */}
         <div>
