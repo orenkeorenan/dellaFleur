@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ShippingMethod({
   shipping,
@@ -10,6 +10,10 @@ function ShippingMethod({
   address,
   setAddress,
 }) {
+  // Optional: initialize to min date if empty
+  const minDate = "2026-02-15";
+  const maxDate = "2026-02-18";
+
   return (
     <div>
       <label style={{ fontWeight: "500" }}>Shipping Method</label>
@@ -32,14 +36,14 @@ function ShippingMethod({
           {shipping === "home" && (
             <div
               style={{ marginTop: "0.5rem" }}
-              onClick={(e) => e.stopPropagation()} // ✅ Prevent outer div click
+              onClick={(e) => e.stopPropagation()} // Prevent parent click
             >
               <input
                 type="date"
-                value={shippingDate}
+                value={shippingDate || minDate} // ✅ Default to minDate if empty
                 onChange={(e) => setShippingDate(e.target.value)}
-                min="2026-02-15"
-                max="2026-02-18"
+                min={minDate}
+                max={maxDate}
                 style={inputStyle}
               />
               <input
@@ -72,7 +76,7 @@ const shippingOptionStyle = (active) => ({
   border: active ? "2px solid #ff7f50" : "1px solid #ccc",
   background: active ? "#fff2eb" : "#fff",
   cursor: "pointer",
-  color:"black"
+  color: "black",
 });
 
 const inputStyle = {
@@ -83,5 +87,5 @@ const inputStyle = {
   border: "1px solid #ccc",
   marginBottom: "0.5rem",
   backgroundColor: "white",
-  color:'black',
+  color: "black",
 };
