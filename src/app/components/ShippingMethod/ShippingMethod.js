@@ -44,5 +44,7 @@ const inputStyle = {
   borderRadius: "0.25rem",
   border: "1px solid #ccc",
   marginBottom: "0.5rem",
+  backgroundColor:"white",
+
 };
 

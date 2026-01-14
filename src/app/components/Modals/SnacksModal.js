@@ -164,6 +164,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
                       borderRadius: "0.25rem",
                       cursor: "pointer",
                       fontWeight: "bold",
+                      backgroundColor:"white",
                     }}
                   >
                     -
@@ -177,6 +178,8 @@ export default function SnacksModal({ isOpen, onClose, product }) {
                       borderRadius: "0.25rem",
                       cursor: "pointer",
                       fontWeight: "bold",
+                      backgroundColor:"white",
+
                     }}
                   >
                     +
