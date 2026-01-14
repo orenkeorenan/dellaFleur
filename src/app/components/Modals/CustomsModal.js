@@ -49,17 +49,24 @@ export default function CustomsModal({ isOpen, onClose, product }) {
       >
         {/* Product Image */}
         {product.images?.[0] && (
+          <div
+          style={{
+            display:'flex',
+            justifyContent:"center"
+          }}
+        >
           <img
             src={product.images[0]}
             alt={product.title}
             style={{
               width: "100%",
-              height: "250px",
+              height: "150px",
               objectFit: "cover",
               borderRadius: "1rem",
               boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
             }}
           />
+        </div>
         )}
 
         {/* Product Title */}

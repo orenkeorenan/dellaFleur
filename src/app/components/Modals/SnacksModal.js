@@ -76,17 +76,24 @@ export default function SnacksModal({ isOpen, onClose, product }) {
           }}
         >
           {/* Product Image & Title */}
-          <img
-            src={product.images[0]}
-            alt={product.title}
+          <div
             style={{
-              width: "100%",
-              height: "250px",
-              objectFit: "cover",
-              borderRadius: "1rem",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+              display:'flex',
+              justifyContent:"center"
             }}
-          />
+          >
+
+            <img
+              src={product.images[0]}
+              alt={product.title}
+              style={{
+                height: "150px",
+                objectFit: "cover",
+                borderRadius: "1rem",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+              }}
+            />
+          </div>
           <h2 style={{ marginTop: "1rem", fontWeight: "600", textAlign: "center" }}>{product.title}</h2>
 
           {/* Items List Scrollable */}
