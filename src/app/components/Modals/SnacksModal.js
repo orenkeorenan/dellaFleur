@@ -42,7 +42,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
 
   const itemsTotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shippingPrice = shipping === "home" ? 3000 : 0;
-  const totalPrice = itemsTotal + shippingPrice;
+  const totalPrice = 10000 + itemsTotal + shippingPrice;
 
   const minOrder = 18000;
   const canCheckout = itemsTotal >= minOrder;
@@ -101,6 +101,33 @@ export default function SnacksModal({ isOpen, onClose, product }) {
               paddingRight: "0.25rem",
             }}
           >
+            <div>
+              <div 
+                style={{ 
+                  fontWeight: "bold",
+                  gap:".4rem",
+                  display:"flex" 
+                }}
+                >
+                Basic Bouquete 
+                <span
+                  style={{
+                    fontSize:".85rem"
+                  }}
+                >  
+                  (10.000 won)
+                </span>
+              </div>
+
+              <div
+                style={{
+                  fontStyle:"italic"
+                }}
+              >
+                *snacks and gift card included
+              </div>
+                
+            </div>
             {items.map((item, idx) => (
               <div
                 key={idx}
