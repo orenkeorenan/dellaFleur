@@ -24,13 +24,15 @@ export default function CustomsModal({ isOpen, onClose, product }) {
 
   const formattedBudget = `${budget.toLocaleString()} won`;
 
-  const whatsappLink = `https://wa.me/821052234189?text=Hello, I want to order a custom bouquet: ${
+  const message = `Hello, I want to order ${quantity || 1} custom bouquet(s): ${
     description || "No description"
   }. Budget: ${formattedBudget}. Shipping: ${
     shipping === "pickup"
       ? "Pickup"
       : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
   }`;
+
+  const whatsappLink = `https://wa.me/821052234189?text=${encodeURIComponent(message)}`;
 
   return (
     <Modals isOpen={isOpen} onClose={onClose}>
