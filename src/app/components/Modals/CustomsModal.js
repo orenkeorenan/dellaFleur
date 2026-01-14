@@ -9,7 +9,6 @@ export default function CustomsModal({ isOpen, onClose, product }) {
   const [description, setDescription] = useState("");
   const [files, setFiles] = useState([]);
   const [budget, setBudget] = useState(20000);
-  const [quantity, setQuantity] = useState(1); // Quantity state
   const [shipping, setShipping] = useState("pickup");
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
@@ -25,16 +24,7 @@ export default function CustomsModal({ isOpen, onClose, product }) {
 
   const formattedBudget = `${budget.toLocaleString()} won`;
 
-  // Handle quantity change
-  const increaseQuantity = () => setQuantity((prev) => prev + 1);
-  const decreaseQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-  const handleQuantityChange = (e) => {
-    const value = Number(e.target.value.replace(/\D/g, ""));
-    setQuantity(value >= 1 ? value : 1);
-  };
-
-  // WhatsApp message
-  const message = `Hello, I want to order ${quantity} custom bouquet(s): ${
+  const message = `Hello, I want to order a custom bouquet: ${
     description || "No description"
   }. Budget: ${formattedBudget}. Shipping: ${
     shipping === "pickup"
@@ -42,10 +32,11 @@ export default function CustomsModal({ isOpen, onClose, product }) {
       : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
   }`;
 
-  const whatsappLink = `https://wa.me/821052234189?text=${encodeURIComponent(message)}`;
+  const whatsappLink = `https://wa.me/6289525594189?text=${encodeURIComponent(message)}`;
 
   return (
     <Modals isOpen={isOpen} onClose={onClose}>
+      {/* Center content */}
       <div
         style={{
           display: "flex",
@@ -60,19 +51,24 @@ export default function CustomsModal({ isOpen, onClose, product }) {
       >
         {/* Product Image */}
         {product.images?.[0] && (
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <img
-              src={product.images[0]}
-              alt={product.title}
-              style={{
-                width: "80%",
-                height: "150px",
-                objectFit: "cover",
-                borderRadius: "1rem",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
-              }}
-            />
-          </div>
+          <div
+          style={{
+            display:'flex',
+            justifyContent:"center"
+          }}
+        >
+          <img
+            src={product.images[0]}
+            alt={product.title}
+            style={{
+              width: "80%",
+              height: "150px",
+              objectFit: "cover",
+              borderRadius: "1rem",
+              boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+            }}
+          />
+        </div>
         )}
 
         {/* Product Title */}
@@ -93,8 +89,8 @@ export default function CustomsModal({ isOpen, onClose, product }) {
               borderRadius: "0.5rem",
               border: "1px solid #ccc",
               resize: "none",
-              backgroundColor: "white",
-              color: "black",
+              backgroundColor:"white",
+              color:"black"
             }}
           />
         </div>
@@ -102,6 +98,8 @@ export default function CustomsModal({ isOpen, onClose, product }) {
         {/* Upload Files */}
         <div>
           <label style={{ fontWeight: "500" }}>Upload reference images</label>
+
+          {/* Hidden native input */}
           <input
             type="file"
             id="fileUpload"
@@ -109,6 +107,8 @@ export default function CustomsModal({ isOpen, onClose, product }) {
             onChange={handleFileChange}
             style={{ display: "none" }}
           />
+
+          {/* Custom button */}
           <label
             htmlFor="fileUpload"
             style={{
@@ -125,6 +125,7 @@ export default function CustomsModal({ isOpen, onClose, product }) {
           >
             Choose Files
           </label>
+
           {files.length > 0 && (
             <div
               style={{
@@ -141,54 +142,12 @@ export default function CustomsModal({ isOpen, onClose, product }) {
           )}
         </div>
 
-        {/* Quantity */}
-        <div>
-          <label style={{ fontWeight: "500" }}>Quantity</label>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              marginTop: "0.25rem",
-            }}
-          >
-            <button onClick={decreaseQuantity} style={buttonStyle}>
-              -
-            </button>
-            <input
-              type="text"
-              value={quantity}
-              onChange={handleQuantityChange}
-              style={{
-                flex: 1,
-                padding: "0.5rem",
-                borderRadius: "0.5rem",
-                border: "1px solid #ccc",
-                textAlign: "center",
-                backgroundColor: "white",
-                color: "black",
-              }}
-            />
-            <button onClick={increaseQuantity} style={buttonStyle}>
-              +
-            </button>
-          </div>
-        </div>
 
         {/* Budget */}
         <div>
           <label style={{ fontWeight: "500" }}>Budget</label>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              marginTop: "0.25rem",
-            }}
-          >
-            <button onClick={decreaseBudget} style={buttonStyle}>
-              -
-            </button>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
+            <button onClick={decreaseBudget} style={buttonStyle}>-</button>
             <input
               type="text"
               value={formattedBudget}
@@ -199,13 +158,11 @@ export default function CustomsModal({ isOpen, onClose, product }) {
                 borderRadius: "0.5rem",
                 border: "1px solid #ccc",
                 textAlign: "center",
-                backgroundColor: "white",
-                color: "black",
+                backgroundColor:"white",
+                color:"black"
               }}
             />
-            <button onClick={increaseBudget} style={buttonStyle}>
-              +
-            </button>
+            <button onClick={increaseBudget} style={buttonStyle}>+</button>
           </div>
         </div>
 
@@ -219,6 +176,7 @@ export default function CustomsModal({ isOpen, onClose, product }) {
           setShippingDate={setShippingDate}
           address={address}
           setAddress={setAddress}
+              
         />
 
         {/* Checkout */}
@@ -245,6 +203,7 @@ export default function CustomsModal({ isOpen, onClose, product }) {
   );
 }
 
+// Helper styles
 const buttonStyle = {
   padding: "0.5rem 0.75rem",
   borderRadius: "0.5rem",
@@ -252,5 +211,7 @@ const buttonStyle = {
   background: "#fff",
   cursor: "pointer",
   fontWeight: "bold",
-  color: "black",
+  color:"black"
 };
+
+

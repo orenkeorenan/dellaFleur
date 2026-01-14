@@ -1,16 +1,23 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Modals from "./Modals";
 import ShippingMethod from "../ShippingMethod/ShippingMethod";
 
 export default function FlowerModal({ isOpen, onClose, product }) {
-  const [selectedColor, setSelectedColor] = useState(null);
+  // Mood colors with friendly names
+  const moodColors = [
+    { hex: "#040102", name: "Black" },
+    { hex: "#F7ECBE", name: "Cream" },
+    { hex: "#CDE3E6", name: "Light Blue" },
+    { hex: "#F5BFCC", name: "Pink" },
+  ];
+
+  const [selectedColor, setSelectedColor] = useState(moodColors[0]); // first color by default
   const [size, setSize] = useState("medium");
   const [shipping, setShipping] = useState("pickup");
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
   const [shippingDate, setShippingDate] = useState("");
-  
 
   if (!isOpen) return null;
 
@@ -19,13 +26,20 @@ export default function FlowerModal({ isOpen, onClose, product }) {
   const shippingPrice = shipping === "home" ? 3000 : 0;
   const totalPrice = basePrice + sizePrice + shippingPrice;
 
-  const whatsappLink = `https://wa.me/821043942212?text=Hello, I want to order ${
-    product.title
-  } (${size}) with color: ${selectedColor || "not selected"} ${
-    shipping === "pickup" ? "pickup" : "send to home, address: " + address
-  }. Total price: ${totalPrice.toLocaleString()} won`;
+  // WhatsApp summary with color name
+  const summary = `
+Product: ${product.title}
+Size: ${size}
+Color: ${selectedColor.name}
+Shipping: ${
+    shipping === "pickup"
+      ? "Pickup"
+      : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
+  }
+Total price: ${totalPrice.toLocaleString()} won
+  `.trim();
 
-  const moodColors = ["#040102", "#F7ECBE", "#CDE3E6", "#F5BFCC"]; // example colors
+  const whatsappLink = `https://wa.me/821043942212?text=${encodeURIComponent(summary)}`;
 
   return (
     <Modals isOpen={isOpen} onClose={onClose}>
@@ -38,12 +52,7 @@ export default function FlowerModal({ isOpen, onClose, product }) {
         }}
       >
         {/* Product Image */}
-        <div
-          style={{
-            display:'flex',
-            justifyContent:"center"
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <img
             src={product.images[0]}
             alt={product.title}
@@ -62,45 +71,43 @@ export default function FlowerModal({ isOpen, onClose, product }) {
 
         {/* Mood Color Selection */}
         <div style={{ margin: "1rem 0", display: "flex", justifyContent: "center", gap: "1rem" }}>
-        {moodColors.map((color, index) => {
-            const isDark = color.toLowerCase() === "#040102" || color.toLowerCase() === "black";
+          {moodColors.map((color, index) => {
+            const isDark = color.hex.toLowerCase() === "#040102";
             return (
-            <div
+              <div
                 key={index}
                 onClick={() => setSelectedColor(color)}
                 style={{
-                width: "50px",
-                height: "50px",
-                borderRadius: "0.5rem",
-                backgroundColor: color,
-                cursor: "pointer",
-                border: selectedColor === color ? "3px solid #ff7f50" : "2px solid #ccc",
-                position: "relative",
-                transition: "all 0.3s ease",
+                  width: "50px",
+                  height: "50px",
+                  borderRadius: "0.5rem",
+                  backgroundColor: color.hex,
+                  cursor: "pointer",
+                  border: selectedColor.hex === color.hex ? "3px solid #ff7f50" : "2px solid #ccc",
+                  position: "relative",
+                  transition: "all 0.3s ease",
                 }}
-            >
-                {selectedColor === color && (
-                <span
+              >
+                {selectedColor.hex === color.hex && (
+                  <span
                     style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    fontSize: "1.2rem",
-                    fontWeight: "bold",
-                    textShadow: "0 0 2px rgba(0,0,0,0.5)",
-                    color: isDark ? "white" : "black",
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      fontSize: "1.2rem",
+                      fontWeight: "bold",
+                      textShadow: "0 0 2px rgba(0,0,0,0.5)",
+                      color: isDark ? "white" : "black",
                     }}
-                >
+                  >
                     ✓
-                </span>
+                  </span>
                 )}
-            </div>
+              </div>
             );
-        })}
+          })}
         </div>
-
-
 
         {/* Size selection */}
         <div style={{ margin: "1rem 0", display: "flex", justifyContent: "center", gap: "1rem" }}>
@@ -127,15 +134,16 @@ export default function FlowerModal({ isOpen, onClose, product }) {
 
         {/* Shipping section */}
         <ShippingMethod
-                  detailAddress={detailAddress}
-                  setDetailAddress={setDetailAddress}
-                  shipping={shipping}
-                  setShipping={setShipping}
-                  shippingDate={shippingDate}
-                  setShippingDate={setShippingDate}
-                  address={address}
-                  setAddress={setAddress}
+          detailAddress={detailAddress}
+          setDetailAddress={setDetailAddress}
+          shipping={shipping}
+          setShipping={setShipping}
+          shippingDate={shippingDate}
+          setShippingDate={setShippingDate}
+          address={address}
+          setAddress={setAddress}
         />
+
         {/* Total & Checkout */}
         <h3 style={{ marginTop: "1rem" }}>Total: {totalPrice.toLocaleString()} won</h3>
         <a

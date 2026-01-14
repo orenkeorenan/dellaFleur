@@ -24,8 +24,6 @@ export default function SnacksModal({ isOpen, onClose, product }) {
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
   const [shippingDate, setShippingDate] = useState("");
-  
-  
 
   const increaseQty = (index) => {
     setItems((prev) =>
@@ -40,8 +38,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
     );
   };
 
-  const basicOrder = 10000;
-
+  const basicOrder = 10000; // Base bouquet
   const itemsTotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shippingPrice = shipping === "home" ? 3000 : 0;
   const totalPrice = basicOrder + itemsTotal + shippingPrice;
@@ -49,12 +46,25 @@ export default function SnacksModal({ isOpen, onClose, product }) {
   const minOrder = 18000 - basicOrder;
   const canCheckout = itemsTotal >= minOrder;
 
+  // Create WhatsApp summary
+  const orderedItems = items
+    .filter((item) => item.quantity > 0)
+    .map((item) => `${item.name} x${item.quantity}`)
+    .join(", ") || "No extra snacks";
 
-  const whatsappLink = `https://wa.me/821043942212?text=Hello, I want to order ${product.title}. Items: ${items
-    .map((i) => `${i.name} x${i.quantity}`)
-    .join(", ")}. Shipping: ${
-    shipping === "pickup" ? "pickup" : "send to home, address: " + address
-  }. Total price: ${totalPrice.toLocaleString()} won`;
+  const summary = `
+Hello! I want to order:
+- Product: ${product.title} (Base Bouquet: 10,000 won)
+- Snacks: ${orderedItems}
+- Shipping: ${
+    shipping === "pickup"
+      ? "Pickup"
+      : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
+  }
+- Total price: ${totalPrice.toLocaleString()} won
+`.trim();
+
+  const whatsappLink = `https://wa.me/821043942212?text=${encodeURIComponent(summary)}`;
 
   return (
     <Modals isOpen={isOpen} onClose={onClose}>
@@ -69,18 +79,12 @@ export default function SnacksModal({ isOpen, onClose, product }) {
         }}
       >
         {/* Product Image & Title */}
-        <div
-          style={{
-            display:'flex',
-            justifyContent:"center"
-          }}
-        >
-
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <img
             src={product.images[0]}
             alt={product.title}
             style={{
-              width:"80%",
+              width: "80%",
               height: "150px",
               objectFit: "cover",
               borderRadius: "1rem",
@@ -88,44 +92,18 @@ export default function SnacksModal({ isOpen, onClose, product }) {
             }}
           />
         </div>
-        <h2 style={{ marginTop: "1rem", fontWeight: "600", textAlign: "center" }}>{product.title}</h2>
+        <h2 style={{ fontWeight: "600", textAlign: "center" ,padding:"1rem"}}>{product.title}</h2>
 
         <div>
-          <div 
-            style={{ 
-              fontWeight: "bold",
-              gap:".4rem",
-              display:"flex" 
-            }}
-            >
-            Basic Bouquete 
-            <span
-              style={{
-                fontSize:".85rem"
-              }}
-            >  
-              (10.000 won)
-            </span>
+          <div style={{ fontWeight: "bold", gap: ".4rem", display: "flex" }}>
+            Basic Bouquet 
+            <span style={{ fontSize: ".85rem" }}>(10,000 won)</span>
           </div>
-
-          <div
-            style={{
-              fontStyle:"italic"
-            }}
-          >
-            *snacks and gift card included
-          </div>
+          <div style={{ fontStyle: "italic" }}>*snacks and gift card included</div>
         </div>
-        {/* Scrollable Content */}
-        <div
-          style={{
-            padding: "1.5rem",
-            overflowY: "auto",
-            flex: "1 1 auto",
-          }}
-        >
 
-          {/* Items List Scrollable */}
+        {/* Scrollable Items */}
+        <div style={{ padding: "1rem", overflowY: "auto", flex: "1 1 auto" }}>
           <div
             style={{
               marginTop: "1rem",
@@ -137,7 +115,6 @@ export default function SnacksModal({ isOpen, onClose, product }) {
               paddingRight: "0.25rem",
             }}
           >
-            
             {items.map((item, idx) => (
               <div
                 key={idx}
@@ -153,7 +130,9 @@ export default function SnacksModal({ isOpen, onClose, product }) {
               >
                 <div>
                   <div style={{ fontWeight: "500" }}>{item.name}</div>
-                  <div style={{ fontSize: "0.85rem", color: "#555" }}>{item.price.toLocaleString()} won</div>
+                  <div style={{ fontSize: "0.85rem", color: "#555" }}>
+                    {item.price.toLocaleString()} won
+                  </div>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                   <button
@@ -164,8 +143,8 @@ export default function SnacksModal({ isOpen, onClose, product }) {
                       borderRadius: "0.25rem",
                       cursor: "pointer",
                       fontWeight: "bold",
-                      backgroundColor:"white",
-                      color:"black"
+                      backgroundColor: "white",
+                      color: "black",
                     }}
                   >
                     -
@@ -179,8 +158,8 @@ export default function SnacksModal({ isOpen, onClose, product }) {
                       borderRadius: "0.25rem",
                       cursor: "pointer",
                       fontWeight: "bold",
-                      backgroundColor:"white",
-                      color:"black"
+                      backgroundColor: "white",
+                      color: "black",
                     }}
                   >
                     +
@@ -195,21 +174,21 @@ export default function SnacksModal({ isOpen, onClose, product }) {
             <h3>Total: {totalPrice.toLocaleString()} won</h3>
             {!canCheckout && (
               <p style={{ color: "#ff4d4f", fontWeight: "500", fontSize: "0.9rem" }}>
-                Minimum items order: {minOrder.toLocaleString()} won (shipping not included)
+                Minimum items order: {minOrder.toLocaleString()} won (excluding base bouquet)
               </p>
             )}
           </div>
 
           {/* Shipping Section */}
           <ShippingMethod
-                  detailAddress={detailAddress}
-                  setDetailAddress={setDetailAddress}
-                  shipping={shipping}
-                  setShipping={setShipping}
-                  shippingDate={shippingDate}
-                  setShippingDate={setShippingDate}
-                  address={address}
-                  setAddress={setAddress}
+            detailAddress={detailAddress}
+            setDetailAddress={setDetailAddress}
+            shipping={shipping}
+            setShipping={setShipping}
+            shippingDate={shippingDate}
+            setShippingDate={setShippingDate}
+            address={address}
+            setAddress={setAddress}
           />
         </div>
 
