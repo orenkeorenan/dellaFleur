@@ -50,7 +50,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
   const canCheckout = itemsTotal >= minOrder;
 
 
-  const whatsappLink = `https://wa.me/+821043942212?text=Hello, I want to order ${product.title}. Items: ${items
+  const whatsappLink = `https://wa.me/821043942212?text=Hello, I want to order ${product.title}. Items: ${items
     .map((i) => `${i.name} x${i.quantity}`)
     .join(", ")}. Shipping: ${
     shipping === "pickup" ? "pickup" : "send to home, address: " + address
@@ -165,6 +165,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
                       cursor: "pointer",
                       fontWeight: "bold",
                       backgroundColor:"white",
+                      color:"black"
                     }}
                   >
                     -
@@ -179,7 +180,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
                       cursor: "pointer",
                       fontWeight: "bold",
                       backgroundColor:"white",
-
+                      color:"black"
                     }}
                   >
                     +

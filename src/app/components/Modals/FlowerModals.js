@@ -19,7 +19,7 @@ export default function FlowerModal({ isOpen, onClose, product }) {
   const shippingPrice = shipping === "home" ? 3000 : 0;
   const totalPrice = basePrice + sizePrice + shippingPrice;
 
-  const whatsappLink = `https://wa.me/+821043942212?text=Hello, I want to order ${
+  const whatsappLink = `https://wa.me/821043942212?text=Hello, I want to order ${
     product.title
   } (${size}) with color: ${selectedColor || "not selected"} ${
     shipping === "pickup" ? "pickup" : "send to home, address: " + address

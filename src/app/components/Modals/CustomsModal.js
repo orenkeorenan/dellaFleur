@@ -24,7 +24,7 @@ export default function CustomsModal({ isOpen, onClose, product }) {
 
   const formattedBudget = `${budget.toLocaleString()} won`;
 
-  const whatsappLink = `https://wa.me/+821052234189?text=Hello, I want to order a custom bouquet: ${
+  const whatsappLink = `https://wa.me/821052234189?text=Hello, I want to order a custom bouquet: ${
     description || "No description"
   }. Budget: ${formattedBudget}. Shipping: ${
     shipping === "pickup"
@@ -182,6 +182,7 @@ const buttonStyle = {
   background: "#fff",
   cursor: "pointer",
   fontWeight: "bold",
+  color:"black"
 };
 
 
