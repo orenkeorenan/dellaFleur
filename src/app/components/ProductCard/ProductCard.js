@@ -25,7 +25,10 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
         fontFamily: 'sans-serif',
         margin: '0.5rem',
         flexShrink: 0,
-        backgroundColor:"white"
+        backgroundColor:"white",
+        display:"flex",
+        flexDirection:'column',
+        gap:'.6rem'
       }}
     >
       {/* Image Carousel */}
@@ -74,23 +77,38 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
       </div>
 
       {/* Product Info */}
-      <div style={{ padding: '0.5rem' }}>
-        <h3
+      <div 
+        style={{ 
+          padding: '0.5rem' ,
+          display:"flex",
+          flexDirection:'column',
+          gap:".8rem"
+        }}
+      >
+        <div
           style={{
-            margin: '0 0 0.3rem 0',
-            fontSize: '1rem',
-            fontWeight: 'bold',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-            color:"black"
+            display:"flex",
+            flexDirection:'column',
+            gap:".2rem"
           }}
         >
-          {title}
-        </h3>
-        <p style={{ margin: 0, fontSize: '0.9rem', color: '#555' }}>
-          Starts from {price} won
-        </p>
+          <h3
+            style={{
+              margin: '0 0 0.3rem 0',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              color:"black"
+            }}
+          >
+            {title}
+          </h3>
+          <p style={{ margin: 0, fontSize: '0.9rem', color: '#555' }}>
+            Starts from {price} won
+          </p>
+        </div>
         <button
           style={{
             marginTop: '0.4rem',
