@@ -59,7 +59,7 @@ export default function CustomsModal({ isOpen, onClose, product }) {
             src={product.images[0]}
             alt={product.title}
             style={{
-              width: "100%",
+              width: "80%",
               height: "150px",
               objectFit: "cover",
               borderRadius: "1rem",
