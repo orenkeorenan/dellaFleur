@@ -62,8 +62,6 @@ export default function SnacksModal({ isOpen, onClose, product }) {
           flexDirection: "column",
           fontFamily: "'Helvetica Neue', sans-serif",
           color: "#333",
-          maxHeight: "90vh", // limit modal height
-          overflow: "hidden", // prevent content spilling
           borderRadius: "1rem",
         }}
       >
