@@ -40,12 +40,15 @@ export default function SnacksModal({ isOpen, onClose, product }) {
     );
   };
 
+  const basicOrder = 10000;
+
   const itemsTotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shippingPrice = shipping === "home" ? 3000 : 0;
-  const totalPrice = 10000 + itemsTotal + shippingPrice;
+  const totalPrice = basicOrder + itemsTotal + shippingPrice;
 
-  const minOrder = 18000;
+  const minOrder = 18000 - basicOrder;
   const canCheckout = itemsTotal >= minOrder;
+
 
   const whatsappLink = `https://wa.me/+821043942212?text=Hello, I want to order ${product.title}. Items: ${items
     .map((i) => `${i.name} x${i.quantity}`)

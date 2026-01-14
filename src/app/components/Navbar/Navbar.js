@@ -8,7 +8,6 @@ function Navbar() {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0.5rem 1rem',
-        borderBottom: '1px solid #ccc',
         flexWrap: 'wrap',
       }}
     >
