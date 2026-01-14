@@ -72,6 +72,7 @@ const shippingOptionStyle = (active) => ({
   border: active ? "2px solid #ff7f50" : "1px solid #ccc",
   background: active ? "#fff2eb" : "#fff",
   cursor: "pointer",
+  color:"black"
 });
 
 const inputStyle = {
@@ -82,4 +83,5 @@ const inputStyle = {
   border: "1px solid #ccc",
   marginBottom: "0.5rem",
   backgroundColor: "white",
+  color:'black',
 };
