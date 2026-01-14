@@ -87,6 +87,8 @@ export default function CustomsModal({ isOpen, onClose, product }) {
               borderRadius: "0.5rem",
               border: "1px solid #ccc",
               resize: "none",
+              backgroundColor:"white",
+              color:"black"
             }}
           />
         </div>
@@ -94,7 +96,15 @@ export default function CustomsModal({ isOpen, onClose, product }) {
         {/* Upload Files */}
         <div>
           <label style={{ fontWeight: "500" }}>Upload reference images</label>
-          <input type="file" multiple onChange={handleFileChange} style={{ display: "block", marginTop: "0.5rem" }} />
+          <input 
+            type="file" multiple onChange={handleFileChange} 
+            style={{ 
+              display: "block", 
+              marginTop: "0.5rem",
+              backgroundColor:"white",
+              color:"black"
+            }} 
+          />
           {files.length > 0 && (
             <div style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#555" }}>
               {files.map((f, idx) => (
@@ -119,6 +129,8 @@ export default function CustomsModal({ isOpen, onClose, product }) {
                 borderRadius: "0.5rem",
                 border: "1px solid #ccc",
                 textAlign: "center",
+                backgroundColor:"white",
+                color:"black"
               }}
             />
             <button onClick={increaseBudget} style={buttonStyle}>+</button>
