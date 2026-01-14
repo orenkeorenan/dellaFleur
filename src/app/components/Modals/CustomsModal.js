@@ -176,7 +176,6 @@ export default function CustomsModal({ isOpen, onClose, product }) {
           setShippingDate={setShippingDate}
           address={address}
           setAddress={setAddress}
-              
         />
 
         {/* Checkout */}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CustomCalendar from "../CustomCalendar/CustomCalendar";
 
 function ShippingMethod({
   shipping,
@@ -10,9 +11,16 @@ function ShippingMethod({
   address,
   setAddress,
 }) {
-  // Optional: initialize to min date if empty
   const minDate = "2026-02-15";
   const maxDate = "2026-02-18";
+
+  // Track if home inputs are shown
+  const [homeActive, setHomeActive] = useState(false);
+
+  const handleHomeClick = () => {
+    setShipping("home");
+    setHomeActive(true); // show calendar + address inputs
+  };
 
   return (
     <div>
@@ -26,26 +34,38 @@ function ShippingMethod({
         }}
       >
         {/* Pickup Option */}
-        <div onClick={() => setShipping("pickup")} style={shippingOptionStyle(shipping === "pickup")}>
+        <div
+          onClick={() => {
+            setShipping("pickup");
+            setHomeActive(false); // hide home inputs
+          }}
+          style={shippingOptionStyle(shipping === "pickup")}
+        >
           Pickup (Free)
         </div>
 
         {/* Home Delivery Option */}
-        <div onClick={() => setShipping("home")} style={shippingOptionStyle(shipping === "home")}>
-          Send to your home
-          {shipping === "home" && (
+        <div style={shippingOptionStyle(shipping === "home")}>
+          {/* Show text only if home inputs not active */}
+          {!homeActive && (
+            <div onClick={handleHomeClick} style={{ cursor: "pointer" }}>
+              Send to your home
+            </div>
+          )}
+
+          {homeActive && (
             <div
               style={{ marginTop: "0.5rem" }}
-              onClick={(e) => e.stopPropagation()} // Prevent parent click
+              onClick={(e) => e.stopPropagation()}
             >
-              <input
-                type="date"
-                value={shippingDate || minDate} // ✅ Default to minDate if empty
-                onChange={(e) => setShippingDate(e.target.value)}
-                min={minDate}
-                max={maxDate}
-                style={inputStyle}
+              <CustomCalendar
+                shippingDate={shippingDate}
+                setShippingDate={setShippingDate}
+                minDate={minDate}
+                maxDate={maxDate}
               />
+
+              {/* Address Inputs */}
               <input
                 type="text"
                 placeholder="Address"

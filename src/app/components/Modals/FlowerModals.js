@@ -28,16 +28,16 @@ export default function FlowerModal({ isOpen, onClose, product }) {
 
   // WhatsApp summary with color name
   const summary = `
-Product: ${product.title}
-Size: ${size}
-Color: ${selectedColor.name}
-Shipping: ${
-    shipping === "pickup"
-      ? "Pickup"
-      : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
-  }
-Total price: ${totalPrice.toLocaleString()} won
-  `.trim();
+    Product: ${product.title}
+    Size: ${size}
+    Color: ${selectedColor.name}
+    Shipping: ${
+        shipping === "pickup"
+          ? "Pickup"
+          : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
+      }
+    Total price: ${totalPrice.toLocaleString()} won
+      `.trim();
 
   const whatsappLink = `https://wa.me/821043942212?text=${encodeURIComponent(summary)}`;
 
@@ -46,7 +46,6 @@ Total price: ${totalPrice.toLocaleString()} won
       <div
         style={{
           padding: "1.5rem",
-          textAlign: "center",
           fontFamily: "'Helvetica Neue', sans-serif",
           color: "#333",
         }}
@@ -67,7 +66,7 @@ Total price: ${totalPrice.toLocaleString()} won
         </div>
 
         {/* Product Title */}
-        <h2 style={{ marginTop: "1rem", fontWeight: "600" }}>{product.title}</h2>
+        <h2 style={{ marginTop: "1rem", fontWeight: "600", textAlign:"center" }}>{product.title}</h2>
 
         {/* Mood Color Selection */}
         <div style={{ margin: "1rem 0", display: "flex", justifyContent: "center", gap: "1rem" }}>
