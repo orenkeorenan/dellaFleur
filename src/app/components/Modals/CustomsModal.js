@@ -106,7 +106,14 @@ export default function CustomsModal({ isOpen, onClose, product }) {
             }} 
           />
           {files.length > 0 && (
-            <div style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#555" }}>
+            <div 
+              style={{ 
+                marginTop: "0.5rem", 
+                fontSize: "0.85rem", 
+                backgroundColor:"white",
+                color:"black"
+              }}
+              >
               {files.map((f, idx) => (
                 <div key={idx}>{f.name}</div>
               ))}
