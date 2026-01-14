@@ -24,13 +24,21 @@ export default function CustomsModal({ isOpen, onClose, product }) {
 
   const formattedBudget = `${budget.toLocaleString()} won`;
 
-  const message = `Hello, I want to order a custom bouquet: ${
-    description || "No description"
-  }. Budget: ${formattedBudget}. Shipping: ${
-    shipping === "pickup"
-      ? "Pickup"
-      : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
-  }`;
+  const message = `Hello! I want to order: (${product.title})
+
+Description:
+${description || "No description"}
+
+Shipping:
+${
+  shipping === "pickup"
+    ? "Pickup"
+    : `Send to home on ${shippingDate || "no date selected"}
+Address: ${address}, ${detailAddress}`
+}
+
+Total price: ${formattedBudget}`;
+
 
   const whatsappLink = `https://wa.me/6289525594189?text=${encodeURIComponent(message)}`;
 
@@ -96,10 +104,9 @@ export default function CustomsModal({ isOpen, onClose, product }) {
         </div>
 
         {/* Upload Files */}
-        <div>
+        {/* <div>
           <label style={{ fontWeight: "500" }}>Upload reference images</label>
 
-          {/* Hidden native input */}
           <input
             type="file"
             id="fileUpload"
@@ -108,7 +115,6 @@ export default function CustomsModal({ isOpen, onClose, product }) {
             style={{ display: "none" }}
           />
 
-          {/* Custom button */}
           <label
             htmlFor="fileUpload"
             style={{
@@ -140,7 +146,7 @@ export default function CustomsModal({ isOpen, onClose, product }) {
               ))}
             </div>
           )}
-        </div>
+        </div> */}
 
 
         {/* Budget */}

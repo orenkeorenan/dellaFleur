@@ -48,21 +48,29 @@ export default function SnacksModal({ isOpen, onClose, product }) {
 
   // Create WhatsApp summary
   const orderedItems = items
-    .filter((item) => item.quantity > 0)
-    .map((item) => `${item.name} x${item.quantity}`)
-    .join(", ") || "No extra snacks";
+  .filter((item) => item.quantity > 0)
+  .map((item) => `- ${item.name} x${item.quantity}`)
+  .join("\n") || "- No extra snacks";
 
-  const summary = `
-Hello! I want to order:
-- Product: ${product.title} (Base Bouquet: 10,000 won)
-- Snacks: ${orderedItems}
-- Shipping: ${
-    shipping === "pickup"
-      ? "Pickup"
-      : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
-  }
-- Total price: ${totalPrice.toLocaleString()} won
-`.trim();
+
+  const summary = `Hello! I want to order: (${product.title})
+
+Base bouquet: 10,000 won
+
+Snacks:
+${orderedItems}
+
+Shipping:
+${
+  shipping === "pickup"
+    ? "Pickup"
+    : `Send to home on ${shippingDate || "no date selected"}
+Address: ${address}, ${detailAddress}`
+}
+
+Total price: ${totalPrice.toLocaleString()} won`;
+
+
 
   const whatsappLink = `https://wa.me/821043942212?text=${encodeURIComponent(summary)}`;
 

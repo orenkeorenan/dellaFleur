@@ -26,18 +26,20 @@ export default function FlowerModal({ isOpen, onClose, product }) {
   const shippingPrice = shipping === "home" ? 3000 : 0;
   const totalPrice = basePrice + sizePrice + shippingPrice;
 
-  // WhatsApp summary with color name
-  const summary = `
-    Product: ${product.title}
-    Size: ${size}
-    Color: ${selectedColor.name}
-    Shipping: ${
-        shipping === "pickup"
-          ? "Pickup"
-          : `Send to home on ${shippingDate || "no date selected"}, address: ${address}, ${detailAddress}`
-      }
-    Total price: ${totalPrice.toLocaleString()} won
-      `.trim();
+  const summary = `Hello! I want to order: (${product.title})
+
+Size: ${size === "medium" ? "Medium" : "Large"}
+Mood color: ${selectedColor.name}
+
+Shipping:
+${
+  shipping === "pickup"
+    ? "Pickup"
+    : `Send to home on ${shippingDate || "no date selected"}
+Address: ${address}, ${detailAddress}`
+}
+
+Total price: ${totalPrice.toLocaleString()} won`;
 
   const whatsappLink = `https://wa.me/821043942212?text=${encodeURIComponent(summary)}`;
 
