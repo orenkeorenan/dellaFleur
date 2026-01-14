@@ -26,7 +26,7 @@ export default function Modals({ isOpen, onClose, children }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        zIndex: 9999,
+        zIndex: 100,
         padding: "1rem",
       }}
     >

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CustomCalendar from "../CustomCalendar/CustomCalendar";
 
-function ShippingMethod({
+export default function ShippingMethod({
   shipping,
   setShipping,
   shippingDate,
@@ -11,33 +11,40 @@ function ShippingMethod({
   address,
   setAddress,
 }) {
+  const openDaumPostcode = () => {
+    if (typeof window !== "undefined" && window.daum) {
+      new window.daum.Postcode({
+        oncomplete: function (data) {
+          // data.address = roadAddress, data.jibunAddress = old-style address
+          setAddress(data.roadAddress);
+          // optional: focus detail address after selection
+          document.getElementById("detailAddress")?.focus();
+        },
+      }).open();
+    }
+  };
+  
   const minDate = "2026-02-15";
   const maxDate = "2026-02-18";
 
-  // Track if home inputs are shown
   const [homeActive, setHomeActive] = useState(false);
 
   const handleHomeClick = () => {
     setShipping("home");
-    setHomeActive(true); // show calendar + address inputs
+    setHomeActive(true);
   };
+
+  
 
   return (
     <div>
       <label style={{ fontWeight: "500" }}>Shipping Method</label>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.5rem",
-          marginTop: "0.25rem",
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "0.25rem" }}>
         {/* Pickup Option */}
         <div
           onClick={() => {
             setShipping("pickup");
-            setHomeActive(false); // hide home inputs
+            setHomeActive(false);
           }}
           style={shippingOptionStyle(shipping === "pickup")}
         >
@@ -46,7 +53,6 @@ function ShippingMethod({
 
         {/* Home Delivery Option */}
         <div style={shippingOptionStyle(shipping === "home")}>
-          {/* Show text only if home inputs not active */}
           {!homeActive && (
             <div onClick={handleHomeClick} style={{ cursor: "pointer" }}>
               Send to your home
@@ -54,10 +60,7 @@ function ShippingMethod({
           )}
 
           {homeActive && (
-            <div
-              style={{ marginTop: "0.5rem" }}
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div style={{ marginTop: "0.5rem" }} onClick={(e) => e.stopPropagation()}>
               <CustomCalendar
                 shippingDate={shippingDate}
                 setShippingDate={setShippingDate}
@@ -70,11 +73,13 @@ function ShippingMethod({
                 type="text"
                 placeholder="Address"
                 value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                onClick={openDaumPostcode} // open Daum API popup
+                readOnly // prevent typing manually
                 style={inputStyle}
               />
               <input
                 type="text"
+                id="detailAddress"
                 placeholder="Detail Address"
                 value={detailAddress}
                 onChange={(e) => setDetailAddress(e.target.value)}
@@ -87,8 +92,6 @@ function ShippingMethod({
     </div>
   );
 }
-
-export default ShippingMethod;
 
 const shippingOptionStyle = (active) => ({
   padding: "0.75rem",
@@ -108,4 +111,5 @@ const inputStyle = {
   marginBottom: "0.5rem",
   backgroundColor: "white",
   color: "black",
+  cursor: "pointer",
 };
