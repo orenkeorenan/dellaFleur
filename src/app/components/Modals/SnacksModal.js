@@ -107,7 +107,7 @@ Total price: ${totalPrice.toLocaleString()} won`;
             Basic Bouquet 
             <span style={{ fontSize: ".85rem" }}>(10,000 won)</span>
           </div>
-          <div style={{ fontStyle: "italic" }}>*snacks and gift card included</div>
+          <div style={{ fontStyle: "italic" }}>*snacks and congratulations card included</div>
         </div>
 
         {/* Scrollable Items */}
