@@ -8,7 +8,7 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
     if (images.length === 0) return;
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2500); // change image every 2.5 seconds
+    }, 2500); 
     return () => clearInterval(interval);
   }, [images]);
 
@@ -35,10 +35,10 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
       <div
         style={{
           width: '100%',
-          paddingTop: '60%',
+          paddingTop: '100%',
           position: 'relative',
           overflow: 'hidden',
-          backgroundColor: '#eee',
+
         }}
       >
         {images.length > 0 ? (
@@ -52,8 +52,8 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
               width: '100%',
               height: '100%',
               objectFit: 'contain',
-              objectPosition:"center",
               transition: 'opacity 0.5s ease-in-out',
+              backgroundColor:"white"
             }}
           />
         ) : (
@@ -82,7 +82,7 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
           padding: '0.5rem' ,
           display:"flex",
           flexDirection:'column',
-          gap:".8rem"
+          gap:".8rem",
         }}
       >
         <div

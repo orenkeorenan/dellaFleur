@@ -14,21 +14,30 @@ export default function HomePage() {
   const [isChooseModalOpen, setIsChooseModalOpen] = useState(false);
 
   const products = [
-    { title: "Flower Bouquete", price: "15.000", images: ["/flower2.png"] },
-    { title: "Snacks Bouquete", price: "18.000", images: ["/snack1.png"] },
+    {
+      title: "Flower Bouquete",
+      price: "15.000",
+      cardImages: ["/flower0.png"], 
+      sizeImages: {
+        medium: "/flower0.png",
+        large: "/flower01.png",
+      },
+    },
+    {
+      title: "Snacks Bouquete",
+      price: "18.000",
+      cardImages: ["/snack.png"],
+    },
     {
       title: "Customs Bouquete",
-      price: "20.000", // fixed from "rice" to "price"
-      images: [
+      price: "20.000",
+      cardImages: [
         "/custom1.png",
         "/custom2.png",
-        "/custom3.png",
-        "/flower1.png",
-        "/flower2.png",
-        "/flower3.png",
       ],
     },
   ];
+
 
   // Helper to render modal
   const renderModal = () => {
@@ -72,7 +81,7 @@ export default function HomePage() {
                 key={product.title}
                 title={product.title}
                 price={product.price}
-                images={product.images}
+                images={product.cardImages}
                 onClick={() => {
                   setSelectedProduct(product);
                   setIsChooseModalOpen(true);

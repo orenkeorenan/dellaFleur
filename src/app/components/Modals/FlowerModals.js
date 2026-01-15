@@ -12,6 +12,14 @@ export default function FlowerModal({ isOpen, onClose, product }) {
     { hex: "#F5BFCC", name: "Pink" },
   ];
 
+  const hexToRgba = (hex, alpha = 0.5) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
+
+
   const [selectedColor, setSelectedColor] = useState(moodColors[0]); // first color by default
   const [size, setSize] = useState("medium");
   const [shipping, setShipping] = useState("pickup");
@@ -25,6 +33,9 @@ export default function FlowerModal({ isOpen, onClose, product }) {
   const sizePrice = size === "large" ? 8000 : 0;
   const shippingPrice = shipping === "home" ? 3000 : 0;
   const totalPrice = basePrice + sizePrice + shippingPrice;
+  const imageSrc = product.sizeImages
+    ? product.sizeImages[size]
+    : product.cardImages[0];
 
   const summary = `Hello! I want to order: (${product.title})
 
@@ -55,14 +66,14 @@ Total price: ${totalPrice.toLocaleString()} won`;
         {/* Product Image */}
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img
-            src={product.images[0]}
+            src={imageSrc}
             alt={product.title}
             style={{
               width: "80%",
               height: "150px",
-              objectFit: "cover",
+              objectFit: "contain",
               borderRadius: "1rem",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+              boxShadow: `0 10px 30px ${hexToRgba(selectedColor.hex, 0.6)}`,
             }}
           />
         </div>
@@ -146,7 +157,7 @@ Total price: ${totalPrice.toLocaleString()} won`;
         />
 
         {/* Total & Checkout */}
-        <h3 style={{ marginTop: "1rem" }}>Total: {totalPrice.toLocaleString()} won</h3>
+        <h3 style={{ marginTop: "1rem",textAlign:'center' }}>Total: {totalPrice.toLocaleString()} won</h3>
         <a
           href={whatsappLink}
           target="_blank"
@@ -161,6 +172,7 @@ Total price: ${totalPrice.toLocaleString()} won`;
             borderRadius: "0.5rem",
             textDecoration: "none",
             transition: "all 0.3s ease",
+            textAlign:'center'
           }}
         >
           Checkout via WhatsApp

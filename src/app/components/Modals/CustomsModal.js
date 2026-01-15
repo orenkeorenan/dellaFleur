@@ -7,14 +7,14 @@ export default function CustomsModal({ isOpen, onClose, product }) {
   if (!isOpen || !product) return null;
 
   const [description, setDescription] = useState("");
-  const [files, setFiles] = useState([]);
+  // const [files, setFiles] = useState([]);
   const [budget, setBudget] = useState(20000);
   const [shipping, setShipping] = useState("pickup");
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
   const [shippingDate, setShippingDate] = useState("");
 
-  const handleFileChange = (e) => setFiles([...e.target.files]);
+  // const handleFileChange = (e) => setFiles([...e.target.files]);
   const increaseBudget = () => setBudget((prev) => prev + 5000);
   const decreaseBudget = () => setBudget((prev) => (prev > 20000 ? prev - 5000 : 20000));
   const handleBudgetChange = (e) => {
@@ -58,26 +58,24 @@ Total price: ${formattedBudget}`;
         }}
       >
         {/* Product Image */}
-        {product.images?.[0] && (
           <div
-          style={{
-            display:'flex',
-            justifyContent:"center"
-          }}
+            style={{
+              display:'flex',
+              justifyContent:"center"
+            }}
         >
           <img
-            src={product.images[0]}
+            src={product.cardImages[0]}
             alt={product.title}
             style={{
               width: "80%",
               height: "150px",
-              objectFit: "cover",
+              objectFit: "contain",
               borderRadius: "1rem",
               boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
             }}
           />
         </div>
-        )}
 
         {/* Product Title */}
         <h2 style={{ fontWeight: "600", textAlign: "center" }}>{product.title}</h2>

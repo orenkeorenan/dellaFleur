@@ -89,14 +89,14 @@ Total price: ${totalPrice.toLocaleString()} won`;
         {/* Product Image & Title */}
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img
-            src={product.images[0]}
+            src={product.cardImages}
             alt={product.title}
             style={{
               width: "80%",
               height: "150px",
-              objectFit: "cover",
-              borderRadius: "1rem",
               boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+              objectFit: "contain",
+              borderRadius: "1rem",
             }}
           />
         </div>
