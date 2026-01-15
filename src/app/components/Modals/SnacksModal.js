@@ -7,13 +7,13 @@ export default function SnacksModal({ isOpen, onClose, product }) {
   if (!isOpen) return null;
 
   const initialItems = [
-    { name: "Beng Beng", price: 2000, quantity: 0, image: "/acc1.png" },
-    { name: "Ferero", price: 1500, quantity: 0, image: "/acc1.png" },
-    { name: "Hersley", price: 3000, quantity: 0, image: "/acc1.png" },
-    { name: "KinderJoy", price: 3500, quantity: 0, image: "/acc1.png" },
-    { name: "불닭라면", price: 2500, quantity: 0, image: "/acc1.png" },
+    { name: "Beng Beng", price: 2000, quantity: 0, image: "/Bengbeng.png" },
+    { name: "Ferero", price: 1500, quantity: 0, image: "/ferero.png" },
+    { name: "Hershey's", price: 3000, quantity: 0, image: "/Hersley.png" },
+    { name: "KinderJoy", price: 3500, quantity: 0, image: "/kinderJoy.png" },
+    { name: "불닭라면", price: 2500, quantity: 0, image: "/samyang.jpg" },
     { name: "Indomie", price: 1500, quantity: 0, image: "/acc1.png" },
-    { name: "❤️candy", price: 6000, quantity: 0, image: "/acc1.png" },
+    { name: "Candy ❤️ Pick (Acc)", price: 6000, quantity: 0, image: "/acc1.png" },
   ];
 
 
@@ -150,13 +150,13 @@ Total price: ${totalPrice.toLocaleString()} won`;
                         width: "45px",
                         height: "45px",
                         borderRadius: "0.5rem",
-                        objectFit: "cover",
+                        objectFit: "contain",
                       }}
                     />
                     <div>
                       <div style={{ fontWeight: "500" }}>{item.name}</div>
                       <div style={{ fontSize: "0.85rem", color: "#555" }}>
-                        {item.price.toLocaleString()} won
+                        {item.price.toLocaleString()} won / pcs
                       </div>
                     </div>
                   </div>
