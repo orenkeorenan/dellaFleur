@@ -43,7 +43,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
   const shippingPrice = shipping === "home" ? 3000 : 0;
   const totalPrice = basicOrder + itemsTotal + shippingPrice;
 
-  const minOrder = 18000 - basicOrder;
+  const minOrder = 20000 - basicOrder;
   const canCheckout = itemsTotal >= minOrder;
 
   // Create WhatsApp summary

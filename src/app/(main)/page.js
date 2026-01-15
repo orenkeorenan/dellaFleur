@@ -67,7 +67,7 @@ export default function HomePage() {
           }}
         >
             <span>(Preorder Graduation)</span>
-            <span>20 January - 13 February</span>
+            <span>13 February</span>
         </div>
       </h1>
 
