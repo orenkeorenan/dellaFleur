@@ -116,10 +116,10 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
             fontSize: '0.9rem',
             borderRadius: '0.25rem',
             border: 'none',
-            backgroundColor: '#B693B9',
-            color: '#fff',
+            backgroundColor: '#705740',
             cursor: 'pointer',
             width: '100%',
+            color:"white"
           }}
           onClick={onClick}
         >
