@@ -6,15 +6,21 @@ function Navbar() {
       style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         padding: '0.5rem 1rem',
         flexWrap: 'wrap',
       }}
     >
-        <div style={{ flex: 1 }}></div>
+        {/* <div style={{ flex: 1 }}></div> */}
 
         {/* Center */}
-        <div style={{ flex: 1, textAlign: 'center', padding:".5rem" }}>
+        <div 
+            style={{ 
+                flex: 1, 
+                textAlign: 'center', 
+                padding:".5rem", 
+                
+            }}>
             <img
                 src="/logo.png"
                 alt="Wrap & Bloom Logo"
@@ -26,7 +32,7 @@ function Navbar() {
         </div>
 
         {/* Right side */}
-        <div
+        {/* <div
             style={{
                 flex: 1,
                 display: 'flex',
@@ -35,7 +41,7 @@ function Navbar() {
             }}
         >
             
-            {/* <button
+            <button
                 style={{
                     background: '#0613c7',
                     cursor: 'pointer',
@@ -47,8 +53,8 @@ function Navbar() {
                 }}
             >
                 Login
-            </button> */}
-        </div>
+            </button>
+        </div> */}
     </nav>
   );
 }
