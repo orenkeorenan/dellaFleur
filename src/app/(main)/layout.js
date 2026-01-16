@@ -1,3 +1,4 @@
+import WhatsappButton from "../components/Buttons/WhatsappButton";
 import Navbar from "../components/Navbar/Navbar";
 
 export default function MainLayout({ children }) {
@@ -20,6 +21,7 @@ export default function MainLayout({ children }) {
                 }}
             >
                 {children}
+                <WhatsappButton/>
             </main>
         </div>
     );
