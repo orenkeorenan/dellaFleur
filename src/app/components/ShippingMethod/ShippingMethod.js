@@ -56,7 +56,7 @@ export default function ShippingMethod({
           {!homeActive && (
             <div onClick={handleHomeClick} style={{ cursor: "pointer" }}>
               Send to your home{" "}
-              <span style={{ fontSize: "0.75em", opacity: 0.7 }}>(busan only)</span>
+              <span style={{ fontSize: "0.75em", opacity: 0.7 }}>(Busan only)</span>
             </div>
           )}
 
