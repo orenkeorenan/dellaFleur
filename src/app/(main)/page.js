@@ -15,7 +15,7 @@ export default function HomePage() {
 
   const products = [
     {
-      title: "Flower Bouquete",
+      title: "Flower Bouquet",
       price: "15.000",
       cardImages: ["/flower0.png"], 
       sizeImages: {
@@ -24,12 +24,12 @@ export default function HomePage() {
       },
     },
     {
-      title: "Snacks Bouquete",
+      title: "Snacks Bouquet",
       price: "18.000",
       cardImages: ["/snack.png"],
     },
     {
-      title: "Customs Bouquete",
+      title: "Custom Bouquet",
       price: "20.000",
       cardImages: [
         "/custom1.png",
@@ -44,11 +44,11 @@ export default function HomePage() {
     if (!selectedProduct || !isChooseModalOpen) return null;
 
     switch (selectedProduct.title) {
-      case "Flower Bouquete":
+      case "Flower Bouquet":
         return <FlowerModal isOpen={isChooseModalOpen} onClose={() => setIsChooseModalOpen(false)} product={selectedProduct} />;
-      case "Snacks Bouquete":
+      case "Snacks Bouquet":
         return <SnacksModal isOpen={isChooseModalOpen} onClose={() => setIsChooseModalOpen(false)} product={selectedProduct} />;
-      case "Customs Bouquete":
+      case "Custom Bouquet":
         return <CustomsModal isOpen={isChooseModalOpen} onClose={() => setIsChooseModalOpen(false)} product={selectedProduct} />;
       default:
         return null;
@@ -67,7 +67,7 @@ export default function HomePage() {
           }}
         >
             <span>(Preorder Graduation)</span>
-            <span>13 February</span>
+            <span>Today - 13 February</span>
         </div>
       </h1>
 

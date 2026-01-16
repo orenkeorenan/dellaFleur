@@ -12,7 +12,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
     { name: "Hershey's", price: 3000, quantity: 0, image: "/Hersley.png" },
     { name: "KinderJoy", price: 3500, quantity: 0, image: "/kinderJoy.png" },
     { name: "불닭라면", price: 2500, quantity: 0, image: "/samyang.jpg" },
-    { name: "Indomie", price: 1500, quantity: 0, image: "/acc1.png" },
+    { name: "Indomie", price: 1500, quantity: 0, image: "/indomie.jpg" },
     { name: "Candy ❤️ Pick (Acc)", price: 6000, quantity: 0, image: "/acc1.png" },
   ];
 
@@ -143,7 +143,7 @@ Total price: ${totalPrice.toLocaleString()} won`;
                     style={{ display: "flex", alignItems: "center", gap: "0.75rem", cursor: "pointer" }}
                     onClick={() => setPreviewImage(item.image)}
                   >
-                    <img
+                    {/* <img
                       src={item.image}
                       alt={item.name}
                       style={{
@@ -152,9 +152,9 @@ Total price: ${totalPrice.toLocaleString()} won`;
                         borderRadius: "0.5rem",
                         objectFit: "contain",
                       }}
-                    />
+                    /> */}
                     <div>
-                      <div style={{ fontWeight: "500" }}>{item.name}</div>
+                      <div style={{ fontWeight: "500",textDecoration:"underline" }}>{item.name}</div>
                       <div style={{ fontSize: "0.85rem", color: "#555" }}>
                         {item.price.toLocaleString()} won / pcs
                       </div>
@@ -163,9 +163,19 @@ Total price: ${totalPrice.toLocaleString()} won`;
 
                   {/* Right: Quantity Controls */}
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <button onClick={() => decreaseQty(idx)}>−</button>
-                    <span>{item.quantity}</span>
-                    <button onClick={() => increaseQty(idx)}>+</button>
+                    <button 
+                      onClick={() => decreaseQty(idx)}
+                      style={buttonStyle}
+                    >
+                      −
+                    </button>
+                      <span>{item.quantity}</span>
+                    <button 
+                      onClick={() => increaseQty(idx)}
+                      style={buttonStyle}
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
               ))}
@@ -244,3 +254,14 @@ Total price: ${totalPrice.toLocaleString()} won`;
     </>
   );
 }
+
+
+const buttonStyle = {
+  padding: "0.5rem 0.75rem",
+  borderRadius: "0.5rem",
+  border: "1px solid #ccc",
+  background: "#fff",
+  cursor: "pointer",
+  fontWeight: "bold",
+  color:"black"
+};
