@@ -39,11 +39,12 @@ export default function SnacksModal({ isOpen, onClose, product }) {
   };
 
   const basicOrder = 10000; 
+  const basicMinOrder = 20000;
   const itemsTotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shippingPrice = shipping === "home" ? 3000 : 0;
   const totalPrice = basicOrder + itemsTotal + shippingPrice;
 
-  const minOrder = 20000 - basicOrder;
+  const minOrder = basicMinOrder - basicOrder;
   const canCheckout = itemsTotal >= minOrder;
 
   // WhatsApp summary
@@ -187,7 +188,7 @@ Total price: ${totalPrice.toLocaleString()} won`;
               <h3>Total: {totalPrice.toLocaleString()} won</h3>
               {!canCheckout && (
                 <p style={{ color: "#ff4d4f", fontWeight: "500", fontSize: "0.9rem" }}>
-                  Minimum items order: {minOrder.toLocaleString()} won (excluding base bouquet)
+                  Minimum items order: {basicMinOrder.toLocaleString()} won (excluding base bouquet)
                 </p>
               )}
             </div>
