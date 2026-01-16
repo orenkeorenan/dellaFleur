@@ -30,7 +30,7 @@ export default function HomePage() {
     },
     {
       title: "Custom Bouquet",
-      price: "20.000",
+      price: "25.000",
       cardImages: [
         "/custom1.png",
         "/custom2.png",

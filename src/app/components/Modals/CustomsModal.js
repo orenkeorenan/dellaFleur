@@ -8,7 +8,7 @@ export default function CustomsModal({ isOpen, onClose, product }) {
 
   const [description, setDescription] = useState("");
   // const [files, setFiles] = useState([]);
-  const [budget, setBudget] = useState(20000);
+  const [budget, setBudget] = useState(25000);
   const [shipping, setShipping] = useState("pickup");
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
@@ -16,10 +16,10 @@ export default function CustomsModal({ isOpen, onClose, product }) {
 
   // const handleFileChange = (e) => setFiles([...e.target.files]);
   const increaseBudget = () => setBudget((prev) => prev + 5000);
-  const decreaseBudget = () => setBudget((prev) => (prev > 20000 ? prev - 5000 : 20000));
+  const decreaseBudget = () => setBudget((prev) => (prev > 25000 ? prev - 5000 : 20000));
   const handleBudgetChange = (e) => {
     const value = Number(e.target.value.replace(/\D/g, ""));
-    if (!isNaN(value)) setBudget(value >= 20000 ? value : 20000);
+    if (!isNaN(value)) setBudget(value >= 25000 ? value : 25000);
   };
 
   const formattedBudget = `${budget.toLocaleString()} won`;
@@ -86,7 +86,7 @@ Total price: ${formattedBudget}`;
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Mau custom made kayak apa Qaqa? ..."
+            placeholder={"Mau custom kayak apa Qaqa? ...\n -duit? -balon? -kupu-kupu?\napa aja boleh yuk sini tanya dulu aja"}
             rows={3}
             style={{
               width: "100%",
