@@ -25,7 +25,7 @@ export default function HomePage() {
     },
     {
       title: "Snacks Bouquet",
-      price: "18.000",
+      price: "20.000",
       cardImages: ["/snack.png"],
     },
     {
