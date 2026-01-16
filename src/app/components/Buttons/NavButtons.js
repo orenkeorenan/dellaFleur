@@ -15,9 +15,9 @@ function NavButtons({ active, setActive }) {
             style={{
                 padding: '0.5rem 1rem',
                 borderRadius: '0.5rem',
-                border: active === btn ? '2px solid #EFE8AD' : '1px solid #ccc',
-                backgroundColor: active === btn ? '#EFE8AD' : '#fff',
-                color: '#000',
+                // border: active === btn ? '2px solid #FFFFFF' : '1px solid #ccc',
+                backgroundColor: active === btn ? '#AA8484' : '#fff',
+                color: active === btn ? '#fff' : '#000',
                 cursor: 'pointer',
                 fontWeight: active === btn ? 'bold' : 'normal',
             }}

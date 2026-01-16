@@ -115,8 +115,7 @@ function ProductCard({ title = 'Product Name', price = '15.000', images = [] ,on
             padding: '0.4rem',
             fontSize: '0.9rem',
             borderRadius: '0.25rem',
-            border: 'none',
-            backgroundColor: '#705740',
+            backgroundColor: '#B5917E',
             cursor: 'pointer',
             width: '100%',
             color:"white"
