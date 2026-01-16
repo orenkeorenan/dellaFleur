@@ -9,7 +9,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
   const initialItems = [
     { name: "Beng Beng", price: 2000, quantity: 0, image: "/Bengbeng.png" },
     { name: "Ferrero Rocher", price: 1500, quantity: 0, image: "/Ferero.png" },
-    { name: "Hershey's", price: 3000, quantity: 0, image: "/Hersley.png" },
+    { name: "Hershey's", price: 3000, quantity: 0, image: "/Hersley.jpg" },
     { name: "KinderJoy", price: 3500, quantity: 0, image: "/kinderJoy.png" },
     { name: "불닭라면", price: 2500, quantity: 0, image: "/samyang.jpg" },
     { name: "Indomie", price: 1500, quantity: 0, image: "/indomie.jpg" },
