@@ -15,7 +15,23 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Della Fleur",
   description: "A modern florist web app featuring Whatsapp-based checkout",
+  openGraph: {
+    title: "Della Fleur",
+    description: "Beautiful custom bouquets for every moment 💐",
+    url: "https://della-fleur.vercel.app",
+    siteName: "Della Fleur",
+    images: [
+      {
+        url: "https://della-fleur.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Della Fleur",
+      },
+    ],
+    type: "website",
+  },
 };
+
 
 export default function RootLayout({ children }) {
   return (
