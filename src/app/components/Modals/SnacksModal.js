@@ -8,7 +8,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
 
   const initialItems = [
     { name: "Beng Beng", price: 2000, quantity: 0, image: "/Bengbeng.png" },
-    { name: "Ferero", price: 1500, quantity: 0, image: "/ferero.png" },
+    { name: "Ferrero", price: 1500, quantity: 0, image: "/ferero.png" },
     { name: "Hershey's", price: 3000, quantity: 0, image: "/Hersley.png" },
     { name: "KinderJoy", price: 3500, quantity: 0, image: "/kinderJoy.png" },
     { name: "불닭라면", price: 2500, quantity: 0, image: "/samyang.jpg" },
@@ -38,7 +38,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
     );
   };
 
-  const basicOrder = 10000; // Base bouquet
+  const basicOrder = 10000; 
   const itemsTotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shippingPrice = shipping === "home" ? 3000 : 0;
   const totalPrice = basicOrder + itemsTotal + shippingPrice;
@@ -46,7 +46,7 @@ export default function SnacksModal({ isOpen, onClose, product }) {
   const minOrder = 20000 - basicOrder;
   const canCheckout = itemsTotal >= minOrder;
 
-  // Create WhatsApp summary
+  // WhatsApp summary
   const orderedItems = items
   .filter((item) => item.quantity > 0)
   .map((item) => `- ${item.name} x${item.quantity}`)
@@ -108,7 +108,7 @@ Total price: ${totalPrice.toLocaleString()} won`;
               Basic Bouquet 
               <span style={{ fontSize: ".85rem" }}>(10,000 won)</span>
             </div>
-            <div style={{ fontStyle: "italic" }}>*snacks and congratulations card included</div>
+            <div style={{ fontStyle: "italic" }}>*snacks and congratulation card included</div>
           </div>
 
           {/* Scrollable Items */}
