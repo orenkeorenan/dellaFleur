@@ -5,7 +5,8 @@ export default function MainLayout({ children }) {
         <div
             style={{
                 minHeight: "100vh",
-                background: "linear-gradient(180deg, #F5BFCC 0%, #FFF0E5 50%, #FFEAEA 100%)",
+                background: "linear-gradient(180deg, #DAC4AF 0%, #E6DDCE 50%, #FFFEE0 100%)",
+                // backgroundColor:"#DAC4AF",
                 display: "flex",
                 flexDirection: "column",
                 fontFamily: "'Helvetica Neue', sans-serif",
